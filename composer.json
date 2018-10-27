@@ -1,12 +1,12 @@
 {
-  "name": "igaster/GITHUB_ADDRESS",
+  "name": "igaster/laravel-model-events",
   "description": "Laravel Custom Model Events",
   "keywords": [
     "laravel-5.x",
     "package"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/igaster/GITHUB_ADDRESS.git",
+  "homepage": "https://github.com/igaster/laravel-model-events.git",
   "authors": [
     {
       "name": "Giannis Gasteratos",
