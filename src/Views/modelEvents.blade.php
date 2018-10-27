@@ -27,7 +27,7 @@
         $query->whereModel($model);
     }
 
-    $modelEvents = $query->->orderBy('created_at', 'desc')->get();
+    $modelEvents = $query->orderBy('created_at', 'desc')->get();
 ?>
 
 <ul class="list-group">

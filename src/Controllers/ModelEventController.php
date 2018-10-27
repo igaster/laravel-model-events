@@ -14,10 +14,8 @@ class ModelEventController
 
     public function userEvents()
     {
-        $user = auth()->user();
-
         return view('model-events::modelEvents',[
-
+            'user' => auth()->user(),
         ]);
     }
 }
