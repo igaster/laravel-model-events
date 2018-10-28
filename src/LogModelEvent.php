@@ -31,13 +31,13 @@ class LogModelEvent extends Model
     // ----------------------------------------------
 
     public function scopeWhereUser(Builder $query, $user){
-        return $query->where('user_id',$user->id);
+        return $query->where('user_id', $user->getKey());
     }
 
     public function scopeWhereModel(Builder $query, $model){
         return $query->where([
-            'model_type' => get_class($model),
-            'model_id' => $model->id
+            'model_type' => $model->getMorphClass(),
+            'model_id' => $model->getKey(),
         ]);
     }
 
