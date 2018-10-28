@@ -97,7 +97,7 @@ $modelEvents = $user->getUserModelEvents(10);
 
 #### c) Build your own queries:
 
-All relationships with the `LogModelEvent` model have been implemented. These are same valid queries:
+All relationships with the `LogModelEvent` model have been implemented. These are some valid queries:
 
 ```php
 $user->modelEvents; // Get all model events for $user
