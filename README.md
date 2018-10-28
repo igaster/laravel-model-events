@@ -30,8 +30,9 @@ class MyModel extends Eloquent
     
 ```
 
+### Step 2: Log yout events:
 
-### Step 2: Manually log any event:
+#### a) Manually
 
 Use the `logModelEvent("Description")` method to log any event
 
@@ -48,16 +49,34 @@ class MyModel extends Eloquent
 - The `logModelEvent()` method will also log a) the current authenticated user and b) the related model instance
 - This is a public method. You may also call it from your `$model` instance from anywhere
 
+#### b) Automatically capture laravel model events:
+
+Eloquent models fire [several events ](https://laravel.com/docs/5.7/eloquent#events) during updating, creating etc. These events can be automatically logged. Just define these events inside the `$logModelEvents` static array in your model:
+
+```php
+
+class MyModel extends Eloquent
+{
+    public static $logModelEvents = [
+        'created',
+        'updated',
+    ];
+
+```
+
+Now every time this model instance is changed, the event will be logged and attributed to the authenticated user.
+As a bonus a report of the updated field will be added in the description!
+
 ### Step 3: Fetch a list of events:
 
-a) From a `$model` instance:
+#### a) From a `$model` instance:
 
 ```php
 // This will retrieve the last 10 events logged for $model instance. 
 $modelEvents = $model->getModelEvents(10);
 ```
 
-b) From a `$user` instance:
+#### b) From a `$user` instance:
 
 In order to query events from a $user model you must first include this trait with the User class:
 Note: This trait is optional for the rest functions of this package!
@@ -70,12 +89,12 @@ class User extends Authenticatable
     use UserLogsModelEvents;
 ```
 
-```
+```php
 // This will retrieve the last 10 events logged by this $user. 
 $modelEvents = $user->getUserModelEvents(10);
 ```
 
-c) Build your own queries:
+#### c) Build your own queries:
 
 All relationships with the `LogModelEvent` model have been implemented. These are same valid queries:
 
@@ -90,7 +109,7 @@ LogModelEvent::whereUser($user)->whereModel($model)->get();
 
 ### Step 4: Display Events:
 
-a) Manually
+#### a) Manually
 
 Through a `LogModelEvents` model you can retrieve the `$user` and the `$model` instances:
 
@@ -105,7 +124,7 @@ foreach($model->modelEvents as $modelEvent){
 
 Note the the `$modelEvent->model` is a polymorphic relationship and it will retrieve a `$model` instance on its respective class.
 
-b) Use package sample view:
+#### b) Use package sample view:
 
 ![image](https://user-images.githubusercontent.com/4586319/47613088-cf211e00-da90-11e8-8e32-76e23976adc6.JPG)
 
