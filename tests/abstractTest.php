@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 
-abstract class abstractTest extends Orchestra\Testbench\TestCase
+abstract class abstractTest extends \Orchestra\Testbench\TestCase
 {
 
 
@@ -15,7 +15,7 @@ abstract class abstractTest extends Orchestra\Testbench\TestCase
         parent::setUpBeforeClass();
         
         if (file_exists(__DIR__.'/../.env')) {
-            $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+            $dotenv = new \Dotenv\Dotenv(__DIR__.'/../');
             $dotenv->load();
         }
     }
@@ -33,7 +33,7 @@ abstract class abstractTest extends Orchestra\Testbench\TestCase
     {
         $config = $app['config'];
 
-        $config->set('auth.providers.users.model', Igaster\ModelEvents\Tests\User::class);
+        $config->set('auth.providers.users.model', Igaster\ModelEvents\Tests\App\User::class);
     }
 
     // -----------------------------------------------

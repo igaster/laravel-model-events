@@ -1,14 +1,14 @@
 <?php
 
-use Igaster\ModelEvents\Tests\TestModel;
-use Igaster\ModelEvents\Tests\User;
+use Igaster\ModelEvents\Tests\App\TestModel;
+use Igaster\ModelEvents\Tests\App\User;
 use Igaster\ModelEvents\LogModelEvent;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 
-class TestCase extends abstractTest
+class ModelEventTest extends abstractTest
 {
 
     // -----------------------------------------------

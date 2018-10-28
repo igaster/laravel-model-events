@@ -1,6 +1,6 @@
 <?php
 
-namespace Igaster\ModelEvents\Tests;
+namespace Igaster\ModelEvents\Tests\App;
 
 use Igaster\ModelEvents\Traits\UserLogsModelEvents;
 use Illuminate\Foundation\Auth\User as Authenticatable;

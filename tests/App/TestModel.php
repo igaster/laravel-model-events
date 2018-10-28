@@ -1,6 +1,6 @@
 <?php
 
-namespace Igaster\ModelEvents\Tests;
+namespace Igaster\ModelEvents\Tests\App;
 
 use Igaster\ModelEvents\Traits\LogsModelEvents;
 use Illuminate\Database\Eloquent\Model as Eloquent;
