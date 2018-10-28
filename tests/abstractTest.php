@@ -61,8 +61,8 @@ abstract class abstractTest extends \Orchestra\Testbench\TestCase
 
     public function reloadModel(&$model)
     {
-        $className = get_class($model);
-        $model = $className::find($model->id);
+        $className = $model->getMorphClass();
+        $model = $className::find($model->getKey());
         return $model;
     }
 
