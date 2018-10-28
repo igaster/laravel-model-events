@@ -72,7 +72,7 @@ trait LogsModelEvents
 
     public function logModelEvent($description = '')
     {
-        if (!$this->id){
+        if (!$this->getKey()){
             return null;
         }
 
