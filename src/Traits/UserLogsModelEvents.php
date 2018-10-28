@@ -18,4 +18,13 @@ trait UserLogsModelEvents
         return $this->hasMany(LogModelEvent::class,'user_id');
     }
 
+    public function getUserModelEvents($count)
+    {
+        $query = $this->modelEvents()->orderBy('id', 'desc');
+        if($count) {
+            $query->limit($count);
+        }
+        return $query->get();
+    }
+
 }

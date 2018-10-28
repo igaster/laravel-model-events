@@ -10,7 +10,9 @@
     <div class="row">
         <div class="col-md-12">
             <h4>Actions History:</h4>
-            @include('crm.partials.modelEvents', ['model' => $order])
+            @include('model-events::modelEvents', [
+                'model' => $model
+            ])
         </div>
     </div>
 
@@ -25,6 +27,10 @@
 
     if(isset($model)) {
         $query->whereModel($model);
+    }
+
+    if(isset($count_events)) {
+        $query->limit($count);
     }
 
     $modelEvents = $query->orderBy('created_at', 'desc')->get();

@@ -218,6 +218,24 @@ class TestCase extends abstractTest
         $this->assertEquals('three', $user_2->modelEvents->first()->description);
     }
 
+    public function testLastNEventsForUser()
+    {
+        $model = TestModel::create();
+        $user = User::find(1);
+        Auth::login($user);
+
+        $model->logModelEvent('one');
+        $model->logModelEvent('two');
+        $model->logModelEvent('three');
+
+        $events = $user->getUserModelEvents(2);
+
+        $this->assertEquals([
+            "three",
+            "two",
+        ], $events->pluck('description')->toArray());
+    }
+
     public function testGetEventsForModel()
     {
         $model_1 = TestModel::create();
@@ -234,6 +252,31 @@ class TestCase extends abstractTest
         $this->assertEquals(0, LogModelEvent::whereModel($model_3)->count());
     }
 
+    public function testLastEventForModel()
+    {
+        $model = TestModel::create();
+
+        $model->logModelEvent('one');
+        $model->logModelEvent('two');
+
+        $this->assertEquals("two", $model->getLastModelEvent()->description);
+    }
+
+    public function testLastNEventsForModel()
+    {
+        $model = TestModel::create();
+
+        $model->logModelEvent('one');
+        $model->logModelEvent('two');
+        $model->logModelEvent('three');
+
+        $events = $model->getModelEvents(2);
+
+        $this->assertEquals([
+            "three",
+            "two",
+        ], $events->pluck('description')->toArray());
+    }
 
     public function testQueryEventsForUserAndModel()
     {

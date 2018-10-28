@@ -82,9 +82,13 @@ trait LogsModelEvents
         ]);
     }
 
-    public function getModelEvents()
+    public function getModelEvents($count = null)
     {
-        return $this->modelEvents()->orderBy('created_at', 'desc')->get();
+        $query = $this->modelEvents()->orderBy('id', 'desc');
+        if($count) {
+            $query->limit($count);
+        }
+        return $query->get();
     }
 
     public function getLastModelEvent()
