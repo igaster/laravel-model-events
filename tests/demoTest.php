@@ -352,4 +352,21 @@ class TestCase extends abstractTest
         $this->assertEquals('created',$model->getLastModelEvent()->description);
     }
 
+
+    public function testModelDeleted()
+    {
+        $model = TestModel::create();
+
+        $user = User::find(1);
+
+        Auth::login($user);
+
+        $model->logModelEvent('one');
+
+        $model->delete();
+
+        $this->assertNull($user->getUserModelEvents()->first()->model);
+
+    }
+
 }
