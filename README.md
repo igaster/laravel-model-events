@@ -66,7 +66,7 @@ class MyModel extends Eloquent
 ```
 
 - Now every time this model instance is changed, the event will be logged and attributed to the authenticated user.
-- As a bonus a report of the updated field will be added in the description!
+- As a bonus a report of all the updated attributes will be added in the description!
 
 ### Step 3: Fetch a list of events:
 
@@ -146,3 +146,26 @@ You may include the `model-events::modelEvents` partial in your views to render 
 ```
 
 Available parameters are: `model`, `user`, `count_events`. All are optional
+
+## Handle Trait Conflicts:
+
+This trait implements the `boot()` method for your model. If you also need to implemeent `boot()` in your model then [rename the method](http://php.net/manual/en/language.oop5.traits.php) when you import the trait:
+
+```php
+use \Igaster\ModelEvents\Traits\LogsModelEvents {
+    boot as bootModelEvents;
+}
+```
+
+and call it in from your own implementation of the boot() method:
+
+```php
+public static function boot()
+{
+    // your code goes here
+    self::bootModelEvents();
+}
+```
+
+The same aproach can be followed if you need to override Eloquent's `create()` or `update()` methods, which are overriden in the Trait.
+
