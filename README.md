@@ -15,7 +15,7 @@ Edit your project's `composer.json` file to require:
 
 and install with `composer update`
 
-this package includes a Service Provider that will be automaticaly discovered by Laravel.
+this package includes a Service Provider that will be automatically discovered by Laravel.
 
 ## Usage
 
@@ -45,9 +45,8 @@ class MyModel extends Eloquent
     }
 ```
 
-- The `logModelEvent()` method will log a) the provided description b) the current authenticated user and b) the related model instance
+- The `logModelEvent()` method will also log a) the current authenticated user and b) the related model instance
 - This is a public method. You may also call it from your `$model` instance from anywhere
-
 
 ### Step 3: Fetch a list of events:
 
@@ -107,6 +106,9 @@ foreach($model->modelEvents as $modelEvent){
 Note the the `$modelEvent->model` is a polymorphic relationship and it will retrieve a `$model` instance on its respective class.
 
 b) Use package sample view:
+
+![image](https://user-images.githubusercontent.com/4586319/47613088-cf211e00-da90-11e8-8e32-76e23976adc6.JPG)
+
 
 You may include the `model-events::modelEvents` partial in your views to render a list of events:
 
