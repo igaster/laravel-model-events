@@ -42,6 +42,7 @@ class MyModel extends Eloquent
 {
     public function myMethod()
     {
+        // ...
         $modelEvent = $this->logModelEvent("Something Happened!");
     }
 ```
@@ -64,8 +65,8 @@ class MyModel extends Eloquent
 
 ```
 
-Now every time this model instance is changed, the event will be logged and attributed to the authenticated user.
-As a bonus a report of the updated field will be added in the description!
+- Now every time this model instance is changed, the event will be logged and attributed to the authenticated user.
+- As a bonus a report of the updated field will be added in the description!
 
 ### Step 3: Fetch a list of events:
 
@@ -101,7 +102,7 @@ All relationships with the `LogModelEvent` model have been implemented. These ar
 ```php
 $user->modelEvents; // Get all model events for $user
 $model->modelEvents; // Get all model events for $model
-$model->modelEvents()->where(`created_at`, '>', $yesterday)->get; // Custom query Builder
+$model->modelEvents()->where(`created_at`, '>', $yesterday)->get(); // Custom Query
 
 // Or you can build queries with the LogModelEvent model:
 LogModelEvent::whereUser($user)->whereModel($model)->get();
