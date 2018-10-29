@@ -166,6 +166,3 @@ public static function boot()
     self::bootModelEvents();
 }
 ```
-
-The same aproach can be followed if you need to override Eloquent's `create()` or `update()` methods, which are overriden in the Trait.
-
