@@ -7,15 +7,13 @@ This is as simple as keeping a diary for your models!
 
 ## Installation
 
-Edit your project's `composer.json` file to require:
+A) Execute `composer require igaster/laravel-model-events`
 
-    "require": {
-        "igaster/laravel-model-events": "~1.0"
-    }
+This package includes a Service Provider that will be automatically discovered by Laravel.
 
-and install with `composer update`
+B) Run migrations.
 
-this package includes a Service Provider that will be automatically discovered by Laravel.
+This will create a table `log_model_events` that will be used to store events.
 
 ## Usage
 
