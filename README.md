@@ -25,7 +25,7 @@ use Igaster\ModelEvents\Traits\LogsModelEvents;
 class MyModel extends Eloquent
 {
     use LogsModelEvents;
-    
+
 ```
 
 ### Step 2: Log yout events:
@@ -71,7 +71,7 @@ class MyModel extends Eloquent
 #### a) From a `$model` instance:
 
 ```php
-// This will retrieve the last 10 events logged for $model instance. 
+// This will retrieve the last 10 events logged for $model instance.
 $modelEvents = $model->getModelEvents(10);
 ```
 
@@ -89,7 +89,7 @@ class User extends Authenticatable
 ```
 
 ```php
-// This will retrieve the last 10 events logged by this $user. 
+// This will retrieve the last 10 events logged by this $user.
 $modelEvents = $user->getUserModelEvents(10);
 ```
 
@@ -144,23 +144,3 @@ You may include the `model-events::modelEvents` partial in your views to render 
 ```
 
 Available parameters are: `model`, `user`, `count_events`. All are optional
-
-## Handle Trait Conflicts:
-
-This trait implements the `boot()` method for your model. If you also need to implemeent `boot()` in your model then [rename the method](http://php.net/manual/en/language.oop5.traits.php) when you import the trait:
-
-```php
-use \Igaster\ModelEvents\Traits\LogsModelEvents {
-    boot as bootModelEvents;
-}
-```
-
-and call it in from your own implementation of the boot() method:
-
-```php
-public static function boot()
-{
-    // your code goes here
-    self::bootModelEvents();
-}
-```

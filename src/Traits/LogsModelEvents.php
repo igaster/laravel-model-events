@@ -19,7 +19,7 @@ trait LogsModelEvents
     // List of Laravel model events that should be recorded
     // public static $logModelEvents = ['created','updated'];
 
-    public static function boot() {
+    public static function bootLogsModelEvents() {
 
         parent::boot();
 
