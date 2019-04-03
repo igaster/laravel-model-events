@@ -1,5 +1,6 @@
 <?php
 
+use Dotenv\Dotenv;
 use Illuminate\Support\Facades\DB;
 
 abstract class abstractTest extends \Orchestra\Testbench\TestCase
@@ -15,7 +16,7 @@ abstract class abstractTest extends \Orchestra\Testbench\TestCase
         parent::setUpBeforeClass();
         
         if (file_exists(__DIR__.'/../.env')) {
-            $dotenv = new \Dotenv\Dotenv(__DIR__.'/../');
+            $dotenv = Dotenv::create(__DIR__.'/../');
             $dotenv->load();
         }
     }

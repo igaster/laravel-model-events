@@ -4,18 +4,6 @@ use Illuminate\Support\ServiceProvider;
 
 class ModelEventsServiceProvider extends ServiceProvider
 {
-    /*--------------------------------------------------------------------------
-    | Bind in IOC
-    |--------------------------------------------------------------------------*/
-
-    public function register()
-    {
-
-        $this->app->singleton('igaster.xxx', function () {
-            return null; // eg new myService();
-        });
-
-    }
 
     /*--------------------------------------------------------------------------
     | Boot

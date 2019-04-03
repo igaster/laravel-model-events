@@ -14,12 +14,12 @@
     }
   ],
   "require": {
-    "php": ">=7.0.0",
+    "php": ">=7.1",
     "illuminate/contracts": "5.*"
   },
   "require-dev": {
-    "orchestra/testbench": "~3.7",
-    "phpunit/phpunit": "~7.0"
+    "orchestra/testbench": "~3.8",
+    "phpunit/phpunit": "~7.5"
   },
   "autoload": {
     "psr-4": {

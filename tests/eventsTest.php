@@ -31,7 +31,7 @@ class ModelEventTest extends abstractTest
     //  Setup Database (Run before each Test)
     // -----------------------------------------------
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
