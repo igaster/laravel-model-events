@@ -21,9 +21,6 @@ trait LogsModelEvents
 
     public static function bootLogsModelEvents() {
 
-        parent::boot();
-
-
         if(property_exists(self::class,'logModelEvents')){
 
             foreach(self::$logModelEvents as $eventName){
