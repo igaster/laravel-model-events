@@ -1,11 +1,14 @@
 ## Description
-[![Laravel](https://img.shields.io/badge/Laravel-5.x-orange.svg)](http://laravel.com)
+[![Laravel](https://img.shields.io/badge/Laravel-orange.svg)](http://laravel.com)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://tldrlegal.com/license/mit-license)
 [![Downloads](https://img.shields.io/packagist/dt/igaster/laravel-model-events.svg)](https://packagist.org/packages/igaster/laravel-model-events)
 
 This is as simple as keeping a diary for your models!
 
-## Installation
+You can record a short message for any model with current timestamp and authenticated user.
+
+
+## Installation:
 
 A) Execute `composer require igaster/laravel-model-events`
 
@@ -45,7 +48,7 @@ class MyModel extends Eloquent
     }
 ```
 
-- The `logModelEvent()` method will also log a) the current authenticated user and b) the related model instance
+- The `logModelEvent()` method will also log a) the current authenticated user and b) the related model instance c) current timestamp
 - This is a public method. You may also call it from your `$model` instance from anywhere
 
 #### b) Automatically capture laravel model events:

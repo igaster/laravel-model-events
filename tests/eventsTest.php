@@ -15,13 +15,13 @@ class ModelEventTest extends abstractTest
     //   Global Setup(Run Once)
     // -----------------------------------------------
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         // Your Code here...
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         // Your Code here...
         parent::tearDownAfterClass();

@@ -11,7 +11,7 @@ abstract class abstractTest extends \Orchestra\Testbench\TestCase
     //  Global Setup (Run once)
     // -----------------------------------------------
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         
@@ -44,7 +44,7 @@ abstract class abstractTest extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \Igaster\ModelEvents\modelEventsServiceProvider::class
+            \Igaster\ModelEvents\ModelEventsServiceProvider::class
         ];
     }
 
