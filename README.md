@@ -2,6 +2,8 @@
 [![Laravel](https://img.shields.io/badge/Laravel-orange.svg)](http://laravel.com)
 [![License](http://img.shields.io/badge/license-MIT-brightgreen.svg)](https://tldrlegal.com/license/mit-license)
 [![Downloads](https://img.shields.io/packagist/dt/igaster/laravel-model-events.svg)](https://packagist.org/packages/igaster/laravel-model-events)
+[![Build Status](https://img.shields.io/travis/igaster/laravel-model-events.svg)](https://travis-ci.org/igaster/laravel-model-events)
+[![Codecov](https://img.shields.io/codecov/c/github/igaster/laravel-model-events.svg)](https://codecov.io/github/igaster/laravel-model-events)
 
 This is as simple as keeping a diary for your models!
 
