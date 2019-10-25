@@ -9,7 +9,6 @@ This is as simple as keeping a diary for your models!
 
 You can record a short message for any model with current timestamp and authenticated user.
 
-
 ## Installation:
 
 A) Execute `composer require igaster/laravel-model-events`
@@ -20,14 +19,14 @@ B) Run migrations.
 
 This will create a table `log_model_events` that will be used to store events.
 
-## Usage
+## Usage:
 
 ### Step 1: Add a Trait to your model:
 
 ```php
 use Igaster\ModelEvents\Traits\LogsModelEvents;
 
-class MyModel extends Eloquent
+class MyModel extends Model
 {
     use LogsModelEvents;
 
@@ -41,13 +40,14 @@ Use the `logModelEvent("Description")` method to log any event
 
 
 ```php
-class MyModel extends Eloquent
+class MyModel extends Model
 {
     public function myMethod()
     {
         // ...
         $modelEvent = $this->logModelEvent("Something Happened!");
     }
+
 ```
 
 - The `logModelEvent()` method will also log a) the current authenticated user and b) the related model instance c) current timestamp
@@ -59,7 +59,7 @@ Eloquent models fire [several events ](https://laravel.com/docs/5.7/eloquent#eve
 
 ```php
 
-class MyModel extends Eloquent
+class MyModel extends Model
 {
     public static $logModelEvents = [
         'created',
