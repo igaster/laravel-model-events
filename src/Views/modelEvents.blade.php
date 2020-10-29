@@ -42,9 +42,9 @@
             {{$modelEvent->description}}
             <div class="pull-right">
                 @if($modelEvent->user)
-                    <span class="label label-pill label-default">{{$modelEvent->user->email}}</span>
+                    <span class="badge badge-info">{{$modelEvent->user->email}}</span>
                 @endif
-                <span class="label label-pill label-info">{{$modelEvent->created_at}}</span>
+                <span class="badge badge-primary">{{$modelEvent->created_at}}</span>
             </div>
         </li>
     @endforeach
