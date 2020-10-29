@@ -33,11 +33,11 @@ trait LogsModelEvents
 
                             $changed=[];
                             foreach($dirty as $key => $value){
-                                $changed[] = "'$key': [" . ($model->original[$key] ?? '-') . "]=>[$value]";
+                                $changed[] = "'$key': [" . ($model->original[$key] ?? '-') . "]→[$value]";
                             }
 
                             if ($changed) {
-                                $description .= ' - Updated values:'. implode(', ', $changed);
+                                $description .= ':'. implode(', ', $changed);
                             }
                         }
                     }
