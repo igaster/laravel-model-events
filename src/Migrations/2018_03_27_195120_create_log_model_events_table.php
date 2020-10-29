@@ -15,7 +15,7 @@ class CreateLogModelEventsTable extends Migration
     {
         Schema::create('log_model_events', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('model_type')->index();
             $table->string('model_id')->index();
             $table->text('description')->nullable();
