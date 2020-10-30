@@ -14,4 +14,12 @@ class TestModel extends Eloquent
     public $timestamps = false;
 
     public static $logModelEvents = [];
+
+    protected static $dontLogUpdatedColumns = [
+        'dont_report',
+    ];
+
+    protected static $sanitizeUpdatedColumns = [
+        'password',
+    ];
 }

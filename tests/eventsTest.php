@@ -44,6 +44,7 @@ class ModelEventTest extends abstractTest
         Schema::create('test_table', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key')->nullable();
+            $table->string('dont_report')->nullable();
             $table->string('password')->nullable();
             $table->timestamps();
         });
@@ -355,7 +356,7 @@ class ModelEventTest extends abstractTest
 
         $model->update([
             'key' => 'value2',
-            'updated_at' => \Carbon\Carbon::parse("01-01-2000")
+            'dont_report' => 'other'
         ]);
 
         $this->assertEquals([
