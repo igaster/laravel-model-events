@@ -44,6 +44,7 @@ class ModelEventTest extends abstractTest
         Schema::create('test_table', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
 
@@ -339,6 +340,45 @@ class ModelEventTest extends abstractTest
             "updating:'key': [value1]→[value2]",
             "updated:'key': [value1]→[value2]",
             "saved",
+        ], $model->modelEvents->pluck('description')->toArray());
+    }
+
+    public function testIgnoreKeys()
+    {
+        TestModel::$logModelEvents = [
+            'updated',
+        ];
+
+        $model = TestModel::create([
+            'key' => 'value1'
+        ]);
+
+        $model->update([
+            'key' => 'value2',
+            'updated_at' => \Carbon\Carbon::parse("01-01-2000")
+        ]);
+
+        $this->assertEquals([
+            "updated:'key': [value1]→[value2]"
+        ], $model->modelEvents->pluck('description')->toArray());
+    }
+
+    public function testSanitizeValues()
+    {
+        TestModel::$logModelEvents = [
+            'updated',
+        ];
+
+        $model = TestModel::create([
+            'password' => 'pass',
+        ]);
+
+        $model->update([
+            'password' => 'secret',
+        ]);
+
+        $this->assertEquals([
+            "updated:'password': ***",
         ], $model->modelEvents->pluck('description')->toArray());
     }
 

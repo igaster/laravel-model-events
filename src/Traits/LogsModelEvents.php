@@ -16,6 +16,14 @@ use Illuminate\Support\Facades\Auth;
 
 trait LogsModelEvents
 {
+    protected static $dontLogUpdatedColumns = [
+        'updated_at',
+    ];
+
+    protected static $sanitizeUpdatedColumns = [
+        'password',
+    ];
+
     // List of Laravel model events that should be recorded
     // public static $logModelEvents = ['created','updated'];
 
@@ -33,7 +41,13 @@ trait LogsModelEvents
 
                             $changed=[];
                             foreach($dirty as $key => $value){
-                                $changed[] = "'$key': [" . ($model->original[$key] ?? '-') . "]→[$value]";
+                                if(!in_array($key, self::$dontLogUpdatedColumns)) {
+                                    if(in_array($key, self::$sanitizeUpdatedColumns)) {
+                                        $changed[] = "'$key': ***";
+                                    } else {
+                                        $changed[] = "'$key': [" . ($model->original[$key] ?? '-') . "]→[$value]";
+                                    }
+                                }
                             }
 
                             if ($changed) {
