@@ -336,8 +336,8 @@ class ModelEventTest extends abstractTest
 
         $this->assertEquals([
             "saving",
-            "updating - Updated values:'key': [value1]=>[value2]",
-            "updated - Updated values:'key': [value1]=>[value2]",
+            "updating:'key': [value1]→[value2]",
+            "updated:'key': [value1]→[value2]",
             "saved",
         ], $model->modelEvents->pluck('description')->toArray());
     }
