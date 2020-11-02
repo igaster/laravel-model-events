@@ -13,6 +13,7 @@ namespace Igaster\ModelEvents\Traits;
 use Igaster\ModelEvents\LogModelEvent;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 trait LogsModelEvents
 {
@@ -89,6 +90,8 @@ trait LogsModelEvents
         if (!$this->getKey()){
             return null;
         }
+
+        Log::info($description);
 
         return $this->modelEvents()->create([
             'description' => $description,
