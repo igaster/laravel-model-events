@@ -2,12 +2,11 @@
 
 namespace Igaster\ModelEvents;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 class LogModelEvent extends Model
 {
-
     protected $table = 'log_model_events';
     protected $guarded = [];
 
@@ -18,6 +17,7 @@ class LogModelEvent extends Model
     public function user()
     {
         $userClass = config('auth.providers.users.model');
+
         return $this->belongsTo($userClass, 'user_id');
     }
 
@@ -30,11 +30,13 @@ class LogModelEvent extends Model
     //  Scopes
     // ----------------------------------------------
 
-    public function scopeWhereUser(Builder $query, $user){
+    public function scopeWhereUser(Builder $query, $user)
+    {
         return $query->where('user_id', $user->getKey());
     }
 
-    public function scopeWhereModel(Builder $query, $model){
+    public function scopeWhereModel(Builder $query, $model)
+    {
         return $query->where([
             'model_type' => $model->getMorphClass(),
             'model_id' => $model->getKey(),

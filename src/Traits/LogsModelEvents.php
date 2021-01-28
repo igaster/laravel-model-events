@@ -2,8 +2,7 @@
 
 namespace Igaster\ModelEvents\Traits;
 
-
-/**
+/*
  * Add this trait to a Model to enable Log custom events.
  * It will log current auth user
  *
@@ -22,17 +21,13 @@ trait LogsModelEvents
 
     public static function bootLogsModelEvents()
     {
-
         if (property_exists(self::class, 'logModelEvents')) {
-
             foreach (self::$logModelEvents as $eventName) {
-
                 static::$eventName(function ($model) use ($eventName) {
                     $description = $eventName;
 
                     if ($eventName == 'updating' || $eventName == 'updated') {
                         if ($dirty = $model->getDirty()) {
-
                             $changed = [];
                             foreach ($dirty as $key => $value) {
                                 if (!self::shouldHideKey($key)) {
@@ -52,7 +47,6 @@ trait LogsModelEvents
 
                     $model->logModelEvent($description);
                 });
-
             }
         }
     }
@@ -67,7 +61,6 @@ trait LogsModelEvents
         return isset(self::$sanitizeUpdatedColumns) && in_array($key, self::$sanitizeUpdatedColumns);
     }
 
-
     // ----------------------------------------------
     //  Relationships
     // ----------------------------------------------
@@ -80,14 +73,13 @@ trait LogsModelEvents
         return $this->morphMany(LogModelEvent::class, 'model');
     }
 
-
     // ----------------------------------------------
     //  Methods
     // ----------------------------------------------
 
     public function logModelEvent($description = '')
     {
-        if (!$this->getKey()){
+        if (!$this->getKey()) {
             return null;
         }
 
@@ -102,9 +94,10 @@ trait LogsModelEvents
     public function getModelEvents($count = null)
     {
         $query = $this->modelEvents()->orderBy('id', 'desc');
-        if($count) {
+        if ($count) {
             $query->limit($count);
         }
+
         return $query->get();
     }
 
@@ -117,5 +110,4 @@ trait LogsModelEvents
     {
         return $this->modelEvents()->delete();
     }
-
 }
